@@ -21,11 +21,12 @@ class Board {
     }
     if (player.position === 100) {
       console.log(`${player.name} won!!!`);
+      return 1;
     }
     while (true) {
       let found = false;
-      for (e of this.snakes) {
-        if (e[o] === player.position) {
+      for (let e of this.snakes) {
+        if (e[0] === player.position) {
           player.position = e[1];
           found = true;
           break;
@@ -35,8 +36,8 @@ class Board {
     }
     while (true) {
       let found = false;
-      for (e of this.ladders) {
-        if (e[o] === player.position) {
+      for (let e of this.ladders) {
+        if (e[0] === player.position) {
           player.position = e[1];
           found = true;
           break;
@@ -44,6 +45,8 @@ class Board {
       }
       if (!found) break;
     }
+    this.currentPlayer = (this.currentPlayer + 1) % this.players.length;
+    return 0;
   }
 }
 module.exports = Board;
