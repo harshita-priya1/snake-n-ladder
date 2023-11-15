@@ -16,6 +16,7 @@ class Board {
     this.ladders.push([start, end]);
   }
   movePlayer(player, steps) {
+    let initialPosition = player.position;
     if (player.position + steps <= 100) {
       player.position = player.position + steps;
     }
@@ -45,7 +46,12 @@ class Board {
       }
       if (!found) break;
     }
+
     this.currentPlayer = (this.currentPlayer + 1) % this.players.length;
+    let finalPosition = player.position;
+    console.log(
+      `${player.name} moved from ${initialPosition} to ${finalPosition}.`
+    );
     return 0;
   }
 }

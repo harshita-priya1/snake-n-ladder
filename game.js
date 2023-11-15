@@ -43,7 +43,8 @@ while (true) {
   let flag = 0;
   let currentPlayer = SnLBoard.players[SnLBoard.currentPlayer];
   let steps = currentPlayer.rollDice();
-  flag = SnLBoard(currentPlayer, steps);
+  console.log(`${currentPlayer.name} got a ${steps}.`);
+  flag = SnLBoard.movePlayer(currentPlayer, steps);
   if (flag === 1) {
     console.log("Game has ended");
     break;
